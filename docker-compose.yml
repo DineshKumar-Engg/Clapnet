@@ -1,28 +1,7 @@
 version: '3.8'
+
 services:
   node-app:
     build: .
     ports:
       - "3000:3000"
-    environment:
-      - MYSQL_HOST=mysql
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=12345
-      - MYSQL_DB=clapnet
-    depends_on:
-      - mysql
-    restart: unless-stopped
-
-  mysql:
-    image: mysql:8.0
-    environment:
-      - MYSQL_ROOT_PASSWORD=12345
-      - MYSQL_DATABASE=mysql
-    volumes:
-      - mysql_data:/var/lib/mysql
-    ports:
-      - "3306:3306"
-    restart: unless-stopped
-
-volumes:
-  mysql_data:

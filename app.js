@@ -4,83 +4,19 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 const mysql = require('mysql2/promise');
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT =  3000;
 
 
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
-// const pool = mysql.createPool({
-//   host: process.env.MYSQL_HOST || 'localhost',  // Docker service name
-//   user: process.env.MYSQL_USER || 'root',
-//   password: process.env.MYSQL_PASSWORD || '12345',
-//   database: process.env.MYSQL_DB || 'clapnet',
-//   waitForConnections: true,
-//   connectionLimit: 10,
-//   queueLimit: 0
-// });
-
-// const pool = mysql.createPool({
-//   host: process.env.MYSQL_HOST || 'mysql',  // Docker service name
-//   user: process.env.MYSQL_USER || 'root',
-//   password: process.env.MYSQL_PASSWORD || '12345',
-//   database: process.env.MYSQL_DB || 'clapnet',
-//   waitForConnections: true,
-//   connectionLimit: 10,
-//   queueLimit: 0
-// });
-
-
-// Test DB connection before starting server
-// (async () => {
-//   try {
-//     const connection = await pool.getConnection();
-//     console.log('✅ MySQL DB connected successfully.');
-//     connection.release();
-
-//     // Start server only after DB is connected
-
-//   } catch (err) {
-//     console.error('❌ Failed to connect to MySQL DB:', err.message);
-//     process.exit(1); // Stop the app if DB is not connected
-//   }
-// })();
-
-// // Routes
-// app.get('/db-console', async (req, res) => {
-//   try {
-//     // List all schemas (databases)
-//     const [schemas] = await pool.query('SHOW DATABASES');
-
-//     // List all tables in the `clapnet` database
-//     const [tables] = await pool.query('SHOW TABLES FROM clapnet');
-
-//     res.json({
-//       schemas: schemas.map(db => db.Database),  // Extract database names
-//       tables: tables.map(table => {
-//         const key = Object.keys(table)[0]; // Table name is under dynamic key
-//         return table[key];
-//       })
-//     });
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// });
 
 // Test route
 app.get('/', (req, res) => {
   res.send('Hello from Clapnet Backend!');
 });
 
-    app.listen(PORT, () => {
+app.listen(PORT, () => {
       console.log(`🚀 Server running on http://localhost:${PORT}`);
-    });
-
-// app.get('/db', async (req, res) => {
-//   const [rows] = await pool.query('SELECT "Hellos World!" AS message');
-//   res.json(rows[0]);
-// });
-
-
-//3.111.37.169
+});
