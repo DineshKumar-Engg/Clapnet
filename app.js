@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(bodyParser.json());
 
+
 // Test route
 app.get('/', (req, res) => {
   res.send('Hello from Clapnet Backend!');
